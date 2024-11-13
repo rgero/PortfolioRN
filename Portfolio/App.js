@@ -8,12 +8,16 @@ import ProjectListScreen from './src/screens/ProjectListScreen';
 import React from 'react';
 import ResumeScreen from './src/screens/ResumeScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { useColorScheme } from 'react-native-web';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? MD3DarkTheme : MD3LightTheme;
+
   return (
-    <PaperProvider theme={{MD3DarkTheme}}>
+    <PaperProvider theme={theme}>
       <NavigationContainer>
         <Drawer.Navigator 
           drawerContent={(props) => <CustomDrawer {...props}/> }

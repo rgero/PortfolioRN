@@ -1,16 +1,17 @@
 import { Image, View } from "react-native-web"
+import { Text, useTheme } from "react-native-paper";
 
 import { StyleSheet } from "react-native";
-import { Text } from "react-native-paper";
 
 const DrawerHeader = () => {
+  const theme = useTheme();
   return (
-    <View style={styles.header}>
+    <View style={[{backgroundColor: theme.colors.background }, styles.header]}>
       <Image
         source={{ uri: 'https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg' }}
         style={styles.headerImage}
       />
-      <Text variant="headlineLarge">Roymond.NET</Text>
+      <Text variant="headlineMedium">Roymond.NET</Text>
     </View>
   )
 }

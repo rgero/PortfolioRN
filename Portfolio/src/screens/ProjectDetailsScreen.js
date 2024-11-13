@@ -1,11 +1,10 @@
-import { Text } from "react-native-paper";
-import { View } from "react-native-web"
+import { Surface, Text } from "react-native-paper";
 
 const ProjectDetailsScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Surface style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text variant="displayLarge">Project Detail Screen</Text>
-    </View>
+    </Surface>
   );
 }
 
