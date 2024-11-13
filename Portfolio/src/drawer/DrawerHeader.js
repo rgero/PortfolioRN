@@ -7,10 +7,10 @@ const DrawerHeader = () => {
   return (
     <View style={styles.header}>
       <Image
-        source={{ uri: 'https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg' }} // Replace with your image URL or local source
+        source={{ uri: 'https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg' }}
         style={styles.headerImage}
       />
-      <Text style={styles.headerText}>Roymond.NET</Text>
+      <Text variant="headlineLarge">Roymond.NET</Text>
     </View>
   )
 }
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 18,
     fontWeight: 'bold',
-  },
+  }
 });
 
 export default DrawerHeader
