@@ -1,4 +1,4 @@
-import { MD3DarkTheme, PaperProvider } from 'react-native-paper';
+import { MD3DarkTheme, PaperProvider, useTheme } from 'react-native-paper';
 
 import CustomDrawer from './src/drawer/CustomDrawer';
 import HomeScreen from './src/screens/HomeScreen';
@@ -22,9 +22,21 @@ export default function App() {
         <Drawer.Navigator 
           drawerContent={(props) => <CustomDrawer {...props}/> }
           initialRouteName="Home"
-          screenOptions={({ route }) => ({
-            headerTitle: `${route.name} - Roymond.NET`
-          })}
+          screenOptions={({ route }) => {
+            const { colors } = useTheme();
+            return {
+              headerTitle: `${route.name} - Roymond.NET`,
+              headerTitleStyle: {
+                color: colors.primary,
+                fontWeight: 'bold',
+              },
+              headerStyle: {
+                backgroundColor: colors.background,
+                borderBottomWidth: 0,
+              },
+              headerTintColor: colors.primary,
+            };
+          }}
         >
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Notifications" component={NotificationsScreen} />
