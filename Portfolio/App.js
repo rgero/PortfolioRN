@@ -1,4 +1,5 @@
 import { MD3DarkTheme, PaperProvider, useTheme } from 'react-native-paper';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,13 +28,21 @@ const linking = {
   },
 };
 
+const timeInSeconds = 600;
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: timeInSeconds * 1000
+    }
+  }
+})
+
 export default function App() {
   const colorScheme = useColorScheme();
   const theme = colorScheme === 'dark' ? MD3DarkTheme : MD3LightTheme;
 
   const [initialState, setInitialState] = useState();
 
-  // Load the saved state on initial app load
   useEffect(() => {
     const loadNavigationState = async () => {
       const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
@@ -44,44 +53,44 @@ export default function App() {
     loadNavigationState();
   }, []);
 
-  // Save the navigation state on every change
   const onStateChange = async (state) => {
     await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
   };
-
-
+  
   return (
     <PaperProvider theme={theme}>
-      <NavigationContainer
-        linking={linking}
-        initialState={initialState}
-        onStateChange={onStateChange}
-      >
-        <Drawer.Navigator 
-          drawerContent={(props) => <CustomDrawer {...props}/> }
-          screenOptions={({ route }) => {
-            const { colors } = useTheme();
-            return {
-              headerTitle: `${route.name} - Roymond.NET`,
-              headerTitleStyle: {
-                color: colors.primary,
-                fontWeight: 'bold',
-              },
-              headerStyle: {
-                backgroundColor: colors.background,
-                borderBottomWidth: 0,
-              },
-              headerTintColor: colors.primary,
-            };
-          }}
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer
+          linking={linking}
+          initialState={initialState}
+          onStateChange={onStateChange}
         >
-          <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-          <Drawer.Screen name="Project List" component={ProjectListScreen} />
-          <Drawer.Screen name="Project Details" component={ProjectDetailsScreen} />
-          <Drawer.Screen name="Resume" component={ResumeScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
+          <Drawer.Navigator 
+            drawerContent={(props) => <CustomDrawer {...props}/> }
+            screenOptions={({ route }) => {
+              const { colors } = useTheme();
+              return {
+                headerTitle: `${route.name} - Roymond.NET`,
+                headerTitleStyle: {
+                  color: colors.primary,
+                  fontWeight: 'bold',
+                },
+                headerStyle: {
+                  backgroundColor: colors.background,
+                  borderBottomWidth: 0,
+                },
+                headerTintColor: colors.primary,
+              };
+            }}
+          >
+            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+            <Drawer.Screen name="Project List" component={ProjectListScreen} />
+            <Drawer.Screen name="Project Details" component={ProjectDetailsScreen} />
+            <Drawer.Screen name="Resume" component={ResumeScreen} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </QueryClientProvider>
     </PaperProvider>
   );
 }

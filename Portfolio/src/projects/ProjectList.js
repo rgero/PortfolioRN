@@ -1,5 +1,6 @@
 import ProjectCard from "./ProjectCard"
 import { ScrollView } from "react-native-web"
+import { useGetProjects } from "./hooks/useGetProjects";
 
 const projectList = [
   {title: "Project 1", language: "React Native", short: "This is a short description of the project"},
@@ -12,6 +13,9 @@ const projectList = [
 // Fucking hell, scrolling.
 
 const ProjectList = () => {
+  const {isLoading, projects, error, refetch} = useGetProjects();
+
+  console.log(projects);
   return (
     <ScrollView style={{width: "100%"}}>
       {projectList.map((project, index) => (
