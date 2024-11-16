@@ -1,25 +1,21 @@
 import ProjectCard from "./ProjectCard"
 import { ScrollView } from "react-native-web"
+import { Text } from "react-native-paper";
 import { useGetProjects } from "./hooks/useGetProjects";
 
-const projectList = [
-  {title: "Project 1", language: "React Native", short: "This is a short description of the project"},
-  {title: "Project 2", language: "React", short: "This is a short description of the project"},
-  {title: "Project 3", language: "C#", short: "This is a short description of the project"},
-  {title: "Project 4", language: "Python", short: "This is a short description of the project"},
-  {title: "Project 5", language: "Photoshop", short: "This is a short description of the project"},
-]
-
-// Fucking hell, scrolling.
-
 const ProjectList = () => {
-  const {isLoading, projects, error, refetch} = useGetProjects();
+  const {isLoading, projects, error} = useGetProjects();
+
+  if (isLoading) return <Text>Loading...</Text>
+  if (projects.length === 0) return <Text>No projects found</Text>
+  if (error) return <Text>Error: {error.message}</Text>
 
   console.log(projects);
+
   return (
     <ScrollView style={{width: "100%"}}>
-      {projectList.map((project, index) => (
-        <ProjectCard key={index} index={index} title={project.title} language={project.language} short={project.short} />
+      {projects.map((project, index) => (
+        <ProjectCard key={index} index={index} title={project.name} language={project.tags[0]} short={project.short} id={project.id} />
       ))}
     </ScrollView>
   )
