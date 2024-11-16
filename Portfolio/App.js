@@ -80,6 +80,7 @@ export default function App() {
                   borderBottomWidth: 0,
                 },
                 headerTintColor: colors.primary,
+                title: `${route.name} - Roymond.NET`,
               };
             }}
           >
