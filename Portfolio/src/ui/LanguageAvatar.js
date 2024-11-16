@@ -5,6 +5,8 @@ const languageImages = {
   react: require('../../assets/languages/react.png'),
   "react native": require('../../assets/languages/react.png'),
   "c#": require('../../assets/languages/csharp.png'),
+  unity: require('../../assets/languages/unity.png'),
+  typescript: require('../../assets/languages/typescript.png'),
 };
 
 const LanguageAvatar = ({props, language}) => {
@@ -14,7 +16,7 @@ const LanguageAvatar = ({props, language}) => {
       size={48}
       source={languageImages[language] ? languageImages[language] : require('../../assets/languages/placeholder.png')}
       style={{ backgroundColor: 'transparent' }}
-      resizeMode="cover"
+      resizeMode="contain"
     />
   )
 }
