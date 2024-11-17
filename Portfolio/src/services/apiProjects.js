@@ -15,3 +15,16 @@ export const getProjects = async () => {
  
   return data;
 }
+
+export const getProjectById = async (id) => {
+  console.log(id);
+  let query = supabase.from("projects").select("*").eq("id", id);
+  const {data, error} = await query;
+
+  if (error)
+  {
+      console.error(error);
+      throw new Error("Project cannot be loaded");
+  }
+  return data[0];
+}
