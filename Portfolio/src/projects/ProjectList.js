@@ -16,6 +16,7 @@ const ProjectList = () => {
       data={projects}
       renderItem={({item}) => <ProjectCard title={item.name} languages={item.tags} short={item.short} id={item.id} />}
       keyExtractor={item => item.id}
+      showsVerticalScrollIndicator={false}
     />
   )
 }
