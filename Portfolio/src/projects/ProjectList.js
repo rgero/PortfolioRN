@@ -1,3 +1,4 @@
+import { FlatList } from "react-native";
 import ProjectCard from "./ProjectCard"
 import { ScrollView } from "react-native-web"
 import { Text } from "react-native-paper";
@@ -10,14 +11,12 @@ const ProjectList = () => {
   if (projects.length === 0) return <Text>No projects found</Text>
   if (error) return <Text>Error: {error.message}</Text>
 
-  console.log(projects);
-
   return (
-    <ScrollView style={{width: "100%"}}>
-      {projects.map((project, index) => (
-        <ProjectCard key={index} index={index} title={project.name} language={project.tags[0]} short={project.short} id={project.id} />
-      ))}
-    </ScrollView>
+    <FlatList
+      data={projects}
+      renderItem={({item}) => <ProjectCard title={item.name} languages={item.tags} short={item.short} id={item.id} />}
+      keyExtractor={item => item.id}
+    />
   )
 }
 
