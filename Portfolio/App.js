@@ -7,8 +7,7 @@ import CustomDrawer from './src/drawer/CustomDrawer';
 import HomeScreen from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-import ProjectDetailsScreen from './src/screens/ProjectDetailsScreen';
-import ProjectListScreen from './src/screens/ProjectListScreen';
+import ProjectNavigator from './src/navigators/ProjectNavigator';
 import ResumeScreen from './src/screens/ResumeScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useColorScheme } from 'react-native-web';
@@ -21,8 +20,13 @@ const linking = {
     screens: {
       Home: '',
       Notifications: 'notifications',
-      'Project List': 'projects',
-      'Project Details': 'projects/:id',
+      Projects: {
+        path: 'projects',
+        screens: {
+          "Project List": '',
+          "Project Details": ':id',
+        },
+      },
       Resume: 'resume',
     },
   },
@@ -86,8 +90,10 @@ export default function App() {
           >
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-            <Drawer.Screen name="Project List" component={ProjectListScreen} />
-            <Drawer.Screen name="Project Details" component={ProjectDetailsScreen} />
+            <Drawer.Screen
+              name="Projects" 
+              component={ProjectNavigator}
+            />
             <Drawer.Screen name="Resume" component={ResumeScreen} />
           </Drawer.Navigator>
         </NavigationContainer>

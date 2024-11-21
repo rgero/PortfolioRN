@@ -22,7 +22,7 @@ const CustomDrawer = (props) => {
       />
       <Drawer.Item
         label="Project List"
-        onPress={() => props.navigation.navigate('Project List')}
+        onPress={() => props.navigation.navigate('Projects')}
         icon={() => <MaterialIcons name="list" size={24} color={theme.colors.primary} />}
       />
       <Drawer.Item
