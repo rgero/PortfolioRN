@@ -10,12 +10,12 @@ services:
       - container-dmz
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfoliorn.rule=Host(`portfolio.roymond.net`)"
+      - "traefik.http.routers.portfoliorn.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.portfoliorn.entrypoints=websecure"
       - "traefik.http.routers.portfoliorn.tls.certresolver=letsEncrypt"
-      - "traefik.http.services.portfoliorn.loadbalancer.server.port=9022"
+      - "traefik.http.services.portfoliorn.loadbalancer.server.port=${PORT_NUMBER}"
     ports:
-      - "9022:9022"
+      - "${PORT_NUMBER}:${PORT_NUMBER}"
     container_name: portfolio_rn
 
 networks:
