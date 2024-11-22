@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  portfolio:
+    build:
+      context: .
+    env_file:
+      - .env
+    networks:
+      - container-dmz
+    ports:
+      - "9022:9022"
+    container_name: portfolio
+
+networks:
+  container-dmz:
+    external: true
