@@ -3,6 +3,7 @@ import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawe
 
 import DrawerHeader from "./DrawerHeader";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import SocialContainer from "./SocialContainer";
 
 const CustomDrawer = (props) => {
   const theme = useTheme();
@@ -30,6 +31,7 @@ const CustomDrawer = (props) => {
         onPress={() => props.navigation.navigate('Resume')}
         icon={() => <MaterialIcons name="description" size={24} color={theme.colors.primary} />}
       />
+      <SocialContainer/>
     </DrawerContentScrollView>
   );
 }
