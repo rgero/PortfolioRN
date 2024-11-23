@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 8,
     elevation: 4,
+    marginTop: 30
   },
   iconContainer: {
     flexDirection: 'row',
