@@ -28,6 +28,11 @@ const SocialLinks = () => {
           size={30}
           onPress={() => openLink('https://instagram.com/rwgero')}
         />
+        <IconButton
+          icon="youtube"
+          size={30}
+          onPress={() => openLink('https://www.youtube.com/@roygero')}
+        />
       </View>
     </Surface>
   );
