@@ -9,8 +9,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import NotificationsScreen from './src/screens/NotificationsScreen';
 import ProjectNavigator from './src/navigators/ProjectNavigator';
 import ResumeScreen from './src/screens/ResumeScreen';
+import { WebsiteTheme } from './src/utils/theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { useColorScheme } from 'react-native-web';
 
 const Drawer = createDrawerNavigator();
 
@@ -42,9 +42,6 @@ const queryClient = new QueryClient({
 })
 
 export default function App() {
-  const colorScheme = useColorScheme();
-  const theme = colorScheme === 'dark' ? MD3DarkTheme : MD3LightTheme;
-
   const [initialState, setInitialState] = useState();
 
   useEffect(() => {
@@ -62,7 +59,7 @@ export default function App() {
   };
   
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={WebsiteTheme}>
       <QueryClientProvider client={queryClient}>
         <NavigationContainer
           linking={linking}
