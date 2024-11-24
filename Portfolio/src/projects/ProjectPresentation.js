@@ -1,4 +1,4 @@
-import { Divider, Text, useTheme } from "react-native-paper";
+import { Divider, MD3DarkTheme, Text, useTheme } from "react-native-paper";
 import { ScrollView, View } from "react-native-web";
 
 import DetailsBox from "./DetailsBox";
@@ -23,7 +23,7 @@ const ProjectPresentation = ({id}) => {
         tags: project.tags
       }}/>
       <View style={{paddingTop: 20}}>
-        <Markdown style={{body: {color: theme.colors.primary}}}>{project.description}</Markdown>
+        <Markdown style={{body: {color: theme.colors.outline}}}>{project.description}</Markdown>
       </View>
     </ScrollView>
   )
