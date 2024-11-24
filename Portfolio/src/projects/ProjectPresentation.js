@@ -16,13 +16,13 @@ const ProjectPresentation = ({id}) => {
   return (
     <ScrollView>
       <Text style={{ fontSize: RFPercentage(3) }}>{project.name}</Text>
-      <Divider/>
+      <Divider style={{marginBottom: 30}}/>
       <DetailsBox details={{
         repo: project.repo,
         website: project.website,
         tags: project.tags
       }}/>
-      <View style={{paddingTop: 20}}>
+      <View style={{paddingTop: 20, marginHorizontal: 10}}>
         <Markdown style={{body: {color: theme.colors.outline}}}>{project.description}</Markdown>
       </View>
     </ScrollView>

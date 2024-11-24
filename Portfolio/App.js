@@ -1,4 +1,4 @@
-import { MD3DarkTheme, PaperProvider, useTheme } from 'react-native-paper';
+import { PaperProvider, useTheme } from 'react-native-paper';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 
