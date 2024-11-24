@@ -1,5 +1,3 @@
-import { Surface, Text } from "react-native-paper";
-
 import ProjectLayout from "../ui/ProjectLayout";
 import ProjectPresentation from "../projects/ProjectPresentation";
 

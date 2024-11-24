@@ -17,7 +17,6 @@ export const getProjects = async () => {
 }
 
 export const getProjectById = async (id) => {
-  console.log(id);
   let query = supabase.from("projects").select("*").eq("id", id);
   const {data, error} = await query;
 
