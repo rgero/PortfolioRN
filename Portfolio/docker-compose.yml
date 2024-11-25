@@ -12,7 +12,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.portfoliorn.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.portfoliorn.entrypoints=websecure"
-      - "traefik.http.routers.portfoliorn.tls.certresolver=letsEncrypt"
+      - "traefik.http.routers.portfoliorn.tls.certresolver=production"
       - "traefik.http.services.portfoliorn.loadbalancer.server.port=${PORT_NUMBER}"
     ports:
       - "${PORT_NUMBER}:${PORT_NUMBER}"
