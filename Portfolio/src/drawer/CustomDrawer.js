@@ -24,11 +24,6 @@ const CustomDrawer = (props) => {
             icon={() => <MaterialIcons name="home" size={24} color={theme.colors.primary} />}
           />
           <Drawer.Item
-            label="Notifications"
-            onPress={() => props.navigation.navigate('Notifications')}
-            icon={() => <MaterialIcons name="notifications" size={24} color={theme.colors.primary} />}
-          />
-          <Drawer.Item
             label="Project List"
             onPress={() => props.navigation.navigate('Projects')}
             icon={() => <MaterialIcons name="list" size={24} color={theme.colors.primary} />}

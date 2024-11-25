@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomDrawer from './src/drawer/CustomDrawer';
 import HomeScreen from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import NotificationsScreen from './src/screens/NotificationsScreen';
 import ProjectNavigator from './src/navigators/ProjectNavigator';
 import ResumeScreen from './src/screens/ResumeScreen';
 import { WebsiteTheme } from './src/utils/theme';
@@ -86,7 +85,6 @@ export default function App() {
             }}
           >
             <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen name="Notifications" component={NotificationsScreen} />
             <Drawer.Screen
               name="Projects" 
               component={ProjectNavigator}
