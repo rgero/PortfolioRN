@@ -1,6 +1,5 @@
 import { FlatList } from "react-native";
 import ProjectCard from "./ProjectCard"
-import { ScrollView } from "react-native-web"
 import { Text } from "react-native-paper";
 import { useGetProjects } from "./hooks/useGetProjects";
 
