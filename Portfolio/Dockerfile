@@ -25,8 +25,11 @@ RUN npm install -g serve
 # Step 9: Copy the exported files from the build stage
 COPY --from=build /app/dist /app/dist
 
-# Step 10: Expose the default port for `serve`
+# Step 10: Add the serve.json configuration for rewrites
+COPY serve.json /app/dist/serve.json
+
+# Step 11: Expose the default port for `serve`
 EXPOSE 9022
 
-# Step 11: Run the static file server to serve the app
-CMD ["serve", "/app/dist", "-l", "9022"]
+# Step 12: Run the static file server to serve the app
+CMD ["serve", "-s", "/app/dist", "-l", "9022"]

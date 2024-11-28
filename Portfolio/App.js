@@ -14,7 +14,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
 const linking = {
-  prefixes: ['roymondnet://', 'https://portfolio.roymond.net', "https://roymond.net", "https://www.roymond.net"],
+  prefixes: [
+    'roymondnet://', 
+    'https://portfolio.roymond.net', 
+    "https://roymond.net", 
+    "https://www.roymond.net",
+  ],
   config: {
     screens: {
       Home: '',
