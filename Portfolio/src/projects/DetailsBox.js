@@ -1,8 +1,13 @@
 import { Button, Card, Text } from "react-native-paper"
 
 import { View } from "react-native-web"
+import { openLink } from '../utils/openLink';
 
 const DetailsBox = ({details}) => {
+
+  // If nothing is passed, return null
+  if (details.website === "" && details.repo === "") return null
+
 
   return (
     <Card style={{width: "40%", alignSelf: "center"}}>
@@ -13,7 +18,7 @@ const DetailsBox = ({details}) => {
             <Button
               icon="folder"
               size={20}
-              onPress={() => console.log('Pressed')}
+              onPress={() => openLink(details.repo)}
             >
               Repository
             </Button>
@@ -22,7 +27,7 @@ const DetailsBox = ({details}) => {
             <Button
               icon="web"
               size={20}
-              onPress={() => console.log('Pressed')}
+              onPress={() => openLink(details.website)}
             >
               Website
             </Button>

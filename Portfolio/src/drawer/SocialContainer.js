@@ -1,15 +1,10 @@
-import * as Linking from 'expo-linking';
-
 import { IconButton, Surface } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
 import React from 'react';
+import { openLink } from '../utils/openLink';
 
 const SocialLinks = () => {
-  const openLink = (url) => {
-    Linking.openURL(url).catch((err) => console.error("Failed to open URL:", err));
-  };
-
   return (
     <Surface style={styles.container}>
       <View style={styles.iconContainer}>
