@@ -25,7 +25,7 @@ const CustomDrawer = (props) => {
           />
           <Drawer.Item
             label="Project List"
-            onPress={() => props.navigation.navigate('Projects')}
+            onPress={() => props.navigation.navigate('Projects', {screen: 'Project List'})}
             icon={() => <MaterialIcons name="list" size={24} color={theme.colors.primary} />}
           />
           <Drawer.Item

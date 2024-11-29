@@ -15,7 +15,7 @@ const ProjectLayout = ({children}) => {
       <FAB 
         style={{ position: 'absolute', margin: 16, right: 0, bottom: 0 }}
         icon={() => <MaterialIcons name="arrow-back" size={24} color={theme.colors.primary} />}
-        onPress={() => navigation.navigate('Project List')}
+        onPress={() => navigation.navigate('Projects', {screen: 'Project List'})}
       />
     </Surface>
   )
