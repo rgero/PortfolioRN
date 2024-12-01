@@ -1,27 +1,33 @@
 import { Platform, StyleSheet } from "react-native";
+import { Surface, useTheme } from "react-native-paper"
 
 import { ScrollView } from "react-native-web"
-import { Surface } from "react-native-paper"
+import { isMobile } from "../utils/isMobile";
 
 const PageLayout = ({children}) => {
+  const theme = useTheme();
   return (
-    <Surface style={{ flex: 1, alignItems: 'center', }}>
-      <ScrollView 
-        style={styles.container}
-        showsVerticalScrollIndicator={false}
-      >
-        {children}
-      </ScrollView>
-    </Surface>
+    <ScrollView 
+      style={[styles.container, {backgroundColor: theme.colors.elevation.level1}]}
+      contentContainerStyle={{alignItems: "center"}}
+      showsVerticalScrollIndicator={false}
+    >
+      <Surface style={styles.surface}>
+          {children}
+      </Surface>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: Platform.OS === 'web' ? '70%' : '100%',
-    alignSelf: 'center', // Center the list horizontally on the web
+    width: "100%",
   },
+  surface: {
+    flex: 1,
+    width: isMobile() ? "90%": "70%"
+  }
 });
 
 export default PageLayout
