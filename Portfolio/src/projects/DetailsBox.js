@@ -1,25 +1,23 @@
-import { Button, Card, Text } from "react-native-paper"
+import { Button, Card, Text, useTheme } from "react-native-paper"
 
-import { Dimensions } from "react-native";
 import { View } from "react-native-web"
 import { openLink } from '../utils/openLink';
 
 const DetailsBox = ({details}) => {
-  const { width: screenWidth } = Dimensions.get('window');
+  const theme = useTheme();
 
   // If nothing is passed, return null
   if (details.website === "" && details.repo === "") return null
-  
   return (
     <Card style={
       {
-        width: screenWidth < 768 ? '75%' : '20%',
-        alignSelf: "center"
+        alignSelf: "center",
+        backgroundColor: theme.colors.backdrop
       }
     }>
       <Card.Content>
-        <View style={{flex: 1, flexDirection: 'column', justifyContent: "flex-end"}}>
-          <Text variant="bodyLarge">Links</Text>
+        <View style={{flex: 1, flexDirection: 'column', alignItems: "center", justifyContent: "space-between"}}>
+          <Text variant="bodyLarge">Important Links</Text>
           {details.repo && (
             <Button
               icon="folder"
