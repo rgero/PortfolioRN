@@ -8,6 +8,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import ProjectNavigator from './src/navigators/ProjectNavigator';
 import ResumeScreen from './src/screens/ResumeScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { WebsiteTheme } from './src/utils/theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -65,38 +66,40 @@ export default function App() {
   return (
     <PaperProvider theme={WebsiteTheme}>
       <QueryClientProvider client={queryClient}>
-        <NavigationContainer
-          linking={linking}
-          initialState={initialState}
-          onStateChange={onStateChange}
-        >
-          <Drawer.Navigator 
-            drawerContent={(props) => <CustomDrawer {...props}/> }
-            screenOptions={({ route }) => {
-              const { colors } = useTheme();
-              return {
-                headerTitle: `${route.name} - Roymond.NET`,
-                headerTitleStyle: {
-                  color: colors.primary,
-                  fontWeight: 'bold',
-                },
-                headerStyle: {
-                  backgroundColor: colors.background,
-                  borderBottomWidth: 0,
-                },
-                headerTintColor: colors.primary,
-                title: `${route.name} - Roymond.NET`,
-              };
-            }}
+        <SafeAreaProvider>
+          <NavigationContainer
+            linking={linking}
+            initialState={initialState}
+            onStateChange={onStateChange}
           >
-            <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen
-              name="Projects" 
-              component={ProjectNavigator}
-            />
-            <Drawer.Screen name="Resume" component={ResumeScreen} />
-          </Drawer.Navigator>
-        </NavigationContainer>
+            <Drawer.Navigator 
+              drawerContent={(props) => <CustomDrawer {...props}/> }
+              screenOptions={({ route }) => {
+                const { colors } = useTheme();
+                return {
+                  headerTitle: `${route.name} - Roymond.NET`,
+                  headerTitleStyle: {
+                    color: colors.primary,
+                    fontWeight: 'bold',
+                  },
+                  headerStyle: {
+                    backgroundColor: colors.background,
+                    borderBottomWidth: 0,
+                  },
+                  headerTintColor: colors.primary,
+                  title: `${route.name} - Roymond.NET`,
+                };
+              }}
+            >
+              <Drawer.Screen name="Home" component={HomeScreen} />
+              <Drawer.Screen
+                name="Projects" 
+                component={ProjectNavigator}
+              />
+              <Drawer.Screen name="Resume" component={ResumeScreen} />
+            </Drawer.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
       </QueryClientProvider>
     </PaperProvider>
   );

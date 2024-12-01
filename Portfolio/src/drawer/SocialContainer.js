@@ -2,6 +2,7 @@ import { IconButton, Surface } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
 import React from 'react';
+import { isAndroidWeb } from '../utils/platformIdentification';
 import { openLink } from '../utils/openLink';
 
 const SocialLinks = () => {
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 8,
     elevation: 4,
-    marginTop: 30,
-    marginHorizontal: 10,
+    paddingBottom: isAndroidWeb() ? 25 : 5,
+    width:"100%"
   },
   iconContainer: {
     flexDirection: 'row',
