@@ -8,7 +8,7 @@ const PageLayout = ({children}) => {
   const theme = useTheme();
   return (
     <ScrollView 
-      style={[styles.container, {backgroundColor: theme.colors.elevation.level1}]}
+      style={[styles.container, {backgroundColor: theme.colors.surface}]}
       contentContainerStyle={{alignItems: "center"}}
       showsVerticalScrollIndicator={false}
     >
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
   },
   surface: {
     flex: 1,
-    width: isMobile() ? "90%": "70%"
+    width: isMobile() ? "90%": "70%",
+    padding: 20,
   }
 });
 

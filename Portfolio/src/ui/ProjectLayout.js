@@ -1,5 +1,5 @@
 import { FAB, Surface, useTheme } from "react-native-paper"
-import { SafeAreaView, ScrollView, View } from "react-native-web";
+import { SafeAreaView, ScrollView } from "react-native-web";
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { isMobile } from "../utils/isMobile";
@@ -9,7 +9,7 @@ const ProjectLayout = ({children}) => {
   const navigation = useNavigation();
   const theme = useTheme();
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.elevation.level1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.surface}}>
       <Surface style={{ flex: 1, width: isMobile() ? '100%' : '70%', alignSelf: 'center'}}>
         <ScrollView style={{paddingTop: 10, paddingHorizontal: 20}}>
           {children}
