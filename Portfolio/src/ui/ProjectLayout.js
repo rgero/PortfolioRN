@@ -2,7 +2,6 @@ import { FAB, Surface, useTheme } from "react-native-paper"
 import { SafeAreaView, ScrollView } from "react-native-web";
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { isAndroidWeb } from "../utils/platformIdentification";
 import { isMobile } from "../utils/isMobile";
 import { useNavigation } from "@react-navigation/native"
 
@@ -16,7 +15,7 @@ const ProjectLayout = ({children}) => {
           {children}
         </ScrollView>
         <FAB 
-          style={{ position: 'absolute', margin: 16, right: 0, bottom: isAndroidWeb() ? 20 : 0 }}
+          style={{ position: 'absolute', margin: 16, right: 0, bottom: 0 }}
           icon={() => <MaterialIcons name="arrow-back" size={24} color={theme.colors.primary} />}
           onPress={() => navigation.navigate('Projects', {screen: 'Project List'})}
         />
