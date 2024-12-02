@@ -1,7 +1,7 @@
-import { Platform, StyleSheet } from "react-native";
 import { Surface, useTheme } from "react-native-paper"
 
 import { ScrollView } from "react-native-web"
+import { StyleSheet } from "react-native";
 import { isMobile } from "../utils/isMobile";
 
 const PageLayout = ({children}) => {
