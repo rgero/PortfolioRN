@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 
 import DetailsBox from "./DetailsBox";
 import Markdown from "react-native-markdown-display";
+import MediaContainer from "../mediaviewer/MediaContainer";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { isMobile } from "../utils/isMobile";
 import { useGetProject } from "./hooks/useGetProject";
@@ -25,6 +26,12 @@ const ProjectPresentation = ({ id }) => {
           <Markdown style={{ body: { color: theme.colors.outline } }}>
             {project.description}
           </Markdown>
+          {project.media.length !== 0 && (
+            <View style={{marginTop: 10}}>
+              <Text variant="headlineMedium">Media</Text>
+              <MediaContainer media={project.media} />
+            </View>
+          )}
         </View>
         {hasDetails && (
           <View style={styles.details}>
