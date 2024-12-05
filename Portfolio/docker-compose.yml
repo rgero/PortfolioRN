@@ -10,7 +10,7 @@ services:
       - container-dmz
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfoliorn.rule=Host(`${DOMAIN_NAME}`)"
+      - "traefik.http.routers.portfoliorn.rule=Host(`${DOMAIN_NAME}`)||Host(`www.${DOMAIN_NAME}`))"
       - "traefik.http.routers.portfoliorn.entrypoints=websecure"
       - "traefik.http.routers.portfoliorn.tls.certresolver=production"
       - "traefik.http.services.portfoliorn.loadbalancer.server.port=${PORT_NUMBER}"
