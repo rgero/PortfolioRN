@@ -14,6 +14,8 @@ services:
       - "traefik.http.routers.portfoliorn.entrypoints=websecure"
       - "traefik.http.routers.portfoliorn.tls.certresolver=production"
       - "traefik.http.services.portfoliorn.loadbalancer.server.port=${PORT_NUMBER}"
+      - "traefik.http.services.portfoliorn.loadbalancer.healthcheck.path=/health"
+      - "traefik.http.services.portfoliorn.loadbalancer.healthcheck.interval=10s"
     ports:
       - "${PORT_NUMBER}:${PORT_NUMBER}"
     container_name: portfolio_rn
