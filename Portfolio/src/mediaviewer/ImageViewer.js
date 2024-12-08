@@ -1,10 +1,11 @@
 import { Image, StyleSheet, View } from "react-native"
 
 const ImageViewer = ({uri}) => {
+  console.log(uri);
   return (
     <View style={{padding: 5}}>
       <Image
-        source={{ uri: "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg" }}
+        source={{ uri: uri }}
         style={styles.image}
         resizeMode="cover"
       />

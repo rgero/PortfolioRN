@@ -19,8 +19,9 @@ const MediaContainer = ({media}) => {
   return (
     <View style={styles.imageContainer}>
       {media.map((item, index) => {
+        console.log(item);
         if (item.type === "image") {
-          return <Image key={index} uri={item.url}/>
+          return <Image key={index} uri={item.src}/>
         } else {
           return <VideoViewer key={index} type={item.type} uri={item.src}/>
         }

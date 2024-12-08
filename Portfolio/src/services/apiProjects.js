@@ -25,5 +25,15 @@ export const getProjectById = async (id) => {
       console.error(error);
       throw new Error("Project cannot be loaded");
   }
-  return data[0];
+
+  let targetProject = data[0];
+  for(let j = 0; j < targetProject.media.length; j++)
+    {
+      targetProject.media[j] = {
+        type: `${targetProject.media[j].type}`,
+        src: targetProject.media[j].type === "image" ? `${baseImageURL}${targetProject.media[j].src}` : `${targetProject.media[j].src}`
+      }
+  }
+
+  return targetProject;
 }
