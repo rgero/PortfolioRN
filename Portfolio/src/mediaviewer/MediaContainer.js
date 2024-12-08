@@ -16,9 +16,6 @@ const MediaContainer = ({media}) => {
     The type will be either image or video.
     The url will be the location of the media.
   */
-  console.log(media);
-
-
   return (
     <View style={styles.imageContainer}>
       {media.map((item, index) => {
