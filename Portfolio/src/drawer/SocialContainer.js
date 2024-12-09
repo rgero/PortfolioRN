@@ -1,6 +1,7 @@
 import { IconButton, Surface } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
+import ItchIconButton from '../ui/ItchIoIconButton';
 import React from 'react';
 import { openLink } from '../utils/openLink';
 
@@ -18,11 +19,7 @@ const SocialLinks = () => {
           size={30}
           onPress={() => openLink('https://linkedin.com/in/roygero')}
         />
-        <IconButton
-          icon="instagram"
-          size={30}
-          onPress={() => openLink('https://instagram.com/rwgero')}
-        />
+        <ItchIconButton/>
         <IconButton
           icon="youtube"
           size={30}
