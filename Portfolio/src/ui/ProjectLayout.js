@@ -2,6 +2,7 @@ import { FAB, Surface, useTheme } from "react-native-paper"
 import { SafeAreaView, ScrollView } from "react-native-web";
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { StyleSheet } from "react-native";
 import { isMobile } from "../utils/isMobile";
 import { useNavigation } from "@react-navigation/native"
 
@@ -10,8 +11,8 @@ const ProjectLayout = ({children}) => {
   const theme = useTheme();
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.surface}}>
-      <Surface style={{ flex: 1, width: isMobile() ? '100%' : '70%', alignSelf: 'center'}}>
-        <ScrollView style={{paddingTop: 10, paddingHorizontal: 20}}>
+      <Surface style={styles.surface}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {children}
         </ScrollView>
         <FAB 
@@ -23,5 +24,19 @@ const ProjectLayout = ({children}) => {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  surface: {
+    flex: 1,
+    width: isMobile() ? '100%' : '70%', 
+    alignSelf: 'center'
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    paddingBottom: isMobile() ? 100 : undefined,
+    paddingTop: 10,
+    paddingHorizontal: 20
+  },
+})
 
 export default ProjectLayout

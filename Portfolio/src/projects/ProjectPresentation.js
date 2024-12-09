@@ -12,13 +12,13 @@ const ProjectPresentation = ({ id }) => {
   const theme = useTheme();
   const { isLoading, project, error } = useGetProject(id);
 
-  if (isLoading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error: {error.message}</Text>;
+  if (isLoading) return <View><Text>Loading...</Text></View>;
+  if (error) return <View><Text>Error: {error.message}</Text></View>;
 
   const hasDetails = project.repo !== "" || project.website !== "";
   
   return (
-    <ScrollView contentContainerStyle={styles.scrollViewContent}>
+    <View style={styles.scrollViewContent}>
       <Text style={{ fontSize: RFPercentage(3) }}>{project.name}</Text>
       <Divider style={{ marginBottom: 30 }} />
       <View style={styles.container}>
@@ -45,7 +45,7 @@ const ProjectPresentation = ({ id }) => {
           </View> 
         )}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -59,11 +59,7 @@ const styles = StyleSheet.create({
   },
   details: {
     flex: isMobile() ? undefined : 1, // Adjust the flex value to specify the width
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-    paddingBottom: isMobile() ? 100 : undefined
-  },
+  }
 });
 
 export default ProjectPresentation;

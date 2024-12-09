@@ -1,43 +1,48 @@
-import Image from "./ImageViewer"
-import { StyleSheet } from "react-native"
-import { Text } from "react-native-paper"
-import VideoViewer from "./VideoViewer"
-import { View } from "react-native-web"
+import ImageThumbnail from "./ImageThumbnail";
+import { StyleSheet } from "react-native";
+import VideoThumbnail from "./VideoThumbnail";
+import { View } from "react-native-web";
+import { isMobile } from "../utils/isMobile";
 
-const MediaContainer = ({media}) => {
-  
+const MediaContainer = ({ media }) => {
   if (!media || media.length === 0) {
-    return null
+    return null;
   }
 
-  /*
-    Media is going to be a list of objects.
-    Each object will have a type and a url.
-    The type will be either image or video.
-    The url will be the location of the media.
-  */
   return (
     <View style={styles.imageContainer}>
       {media.map((item, index) => {
-        console.log(item);
         if (item.type === "image") {
-          return <Image key={index} uri={item.src}/>
+          return (
+            <View key={index} style={styles.item}>
+              <ImageThumbnail uri={item.src} />
+            </View>
+          );
         } else {
-          return <VideoViewer key={index} type={item.type} uri={item.src}/>
+          return (
+            <View key={index} style={styles.item}>
+              <VideoThumbnail id={item.src} />
+            </View>
+          );
         }
       })}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  imageContainer:
-  {
-    maxWidth: "40%",
-    alignSelf: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  }
-})
+  imageContainer: {
+    maxWidth: "80%", // Adjust the container width as needed
+    alignSelf: "center",
+    flexDirection: "row",
+    flexWrap: "wrap", // Enables wrapping to new rows
+    justifyContent: "space-between", // Adds spacing between items
+  },
+  item: {
+    width: isMobile() ? "25%" : "18%", // Each item takes 18% of the container's width (slightly less than 20% to leave space for gaps)
+    aspectRatio: 1, // Keeps items square
+    margin: "1%", // Adds margin for spacing
+  },
+});
 
-export default MediaContainer
+export default MediaContainer;
