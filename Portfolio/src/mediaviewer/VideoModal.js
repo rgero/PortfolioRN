@@ -1,10 +1,13 @@
-import { Button, Modal, Portal, Text, useTheme } from 'react-native-paper';
+import { Modal, Portal, Text, useTheme } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
 import React from 'react';
+import VideoPresenter from './VideoPresenter';
+import { isMobile } from '../utils/isMobile';
 
 const VideoModal = ({ isVisible, dismissModal, id }) => {
   const theme = useTheme();
+  const isOnMobile = isMobile();
 
   const styles = StyleSheet.create({
     container: {
@@ -34,6 +37,22 @@ const VideoModal = ({ isVisible, dismissModal, id }) => {
     },
   });
 
+  const modalPresentation = isMobile ? (
+    <VideoPresenter id={id} />
+  ) : (
+    <View style={styles.iframeContainer}>
+      <iframe
+        src={`https://www.youtube.com/embed/${id}`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={styles.iframe}
+      />
+    </View>
+  )
+
   return (
     <Portal>
       <Modal
@@ -41,19 +60,7 @@ const VideoModal = ({ isVisible, dismissModal, id }) => {
         onDismiss={dismissModal}
         contentContainerStyle={styles.container}
       >
-        {id ? (
-          <View style={styles.iframeContainer}>
-            <iframe
-              src={`https://www.youtube.com/embed/${id}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              style={styles.iframe}
-            />
-          </View>
-        ) : (
+        {id ? modalPresentation : (
           <View>
             <Text>No video available</Text>
           </View>

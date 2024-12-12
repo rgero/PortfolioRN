@@ -1,5 +1,5 @@
-import { Button, Modal, Portal, Text, useTheme } from 'react-native-paper';
 import { Image, StyleSheet, View } from 'react-native';
+import { Modal, Portal, Text, useTheme } from 'react-native-paper';
 
 import React from 'react';
 

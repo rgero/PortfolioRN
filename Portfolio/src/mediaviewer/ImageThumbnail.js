@@ -3,7 +3,7 @@ import { Image, Pressable, StyleSheet, View } from "react-native"
 import ImageModal from "./ImageModal";
 import { useState } from "react";
 
-const ImageViewer = ({uri}) => {
+const ImageThumbnail = ({uri}) => {
   const [visible, setModalVisible] = useState(false);
 
   const dismissModal = () => {
@@ -26,7 +26,7 @@ const ImageViewer = ({uri}) => {
   )
 }
 
-export default ImageViewer
+export default ImageThumbnail
 
 const styles = StyleSheet.create({
   image: {
