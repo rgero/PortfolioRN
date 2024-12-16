@@ -1,6 +1,7 @@
 import { Image, Pressable, StyleSheet, View } from "react-native"
 
 import ImageModal from "./ImageModal";
+import { isMobile } from "../utils/isMobile";
 import { useState } from "react";
 
 const ImageThumbnail = ({uri}) => {
@@ -30,7 +31,8 @@ export default ImageThumbnail
 
 const styles = StyleSheet.create({
   image: {
-    width: 75,
-    height: 75,
+    width: isMobile() ? 75 : 125,
+    height: isMobile() ? 75 : 125,
+    borderRadius: 3
   }
 })

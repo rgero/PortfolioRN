@@ -30,8 +30,9 @@ const VideoThumbnail = ({id}) => {
 
 const styles = StyleSheet.create({
   thumbnail: {
-    width: 75,
-    height: 75,
+    width: isMobile() ? 75 : 125,
+    height: isMobile() ? 75 : 125,
+    borderRadius: 3
   }
 })
 
