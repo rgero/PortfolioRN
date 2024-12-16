@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
 
 import VideoModal from "./VideoModal";
+import { isMobile } from "../utils/isMobile";
 
 const VideoThumbnail = ({id}) => {
   const targetURL = `https://img.youtube.com/vi/${id}/0.jpg`;
