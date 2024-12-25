@@ -37,7 +37,7 @@ const VideoModal = ({ isVisible, dismissModal, id }) => {
     },
   });
 
-  const modalPresentation = isMobile ? (
+  const modalPresentation = isOnMobile ? (
     <VideoPresenter id={id} />
   ) : (
     <View style={styles.iframeContainer}>
