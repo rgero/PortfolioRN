@@ -1,6 +1,7 @@
 import { Image, View } from "react-native-web"
 import { Text, useTheme } from "react-native-paper";
 
+import { SUPABASE_BUCKET_URL } from '@env';
 import { StyleSheet } from "react-native";
 
 const DrawerHeader = () => {
@@ -8,7 +9,7 @@ const DrawerHeader = () => {
   return (
     <View style={[{backgroundColor: theme.colors.background }, styles.header]}>
       <Image
-        source={{ uri: 'https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg' }}
+        source={{ uri: `${SUPABASE_BUCKET_URL}/files/profile.jpg` }}
         style={styles.headerImage}
       />
       <Text variant="headlineMedium">Roymond.NET</Text>
