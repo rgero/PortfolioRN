@@ -14,53 +14,49 @@ const VideoModal = ({ isVisible, dismissModal, id }) => {
       flex: 1,
       backgroundColor: theme.colors.surface,
       padding: 20,
-      margin: 20,
       borderRadius: 10,
-      width: '75%',
-      height: 'auto', // Height will be determined by aspect ratio
+      width: '90%',
+      maxWidth: isOnMobile ? '85%' : '60%',
+      maxHeight: '80%',
       alignSelf: 'center',
       justifyContent: 'center',
-    },
-    iframeContainer: {
-      position: 'relative',
-      width: '100%',
-      paddingBottom: '56.25%', // 16:9 aspect ratio (height = 9/16 of width)
       overflow: 'hidden',
     },
-    iframe: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      border: 'none', // Removes iframe border
+    mobileContainer: {
+      backgroundColor: theme.colors.surface,
+      padding: 25,
+      borderRadius: 10,
+      alignSelf: 'center', // Centers the modal
+      maxWidth: isOnMobile ? '90%' : '60%',
+      maxHeight: '80%',
+      justifyContent: 'center',
+      overflow: 'hidden',
+    },
+    content: {
+      flex: 1,
     },
   });
-
-  const modalPresentation = isOnMobile ? (
-    <VideoPresenter id={id} />
-  ) : (
-    <View style={styles.iframeContainer}>
-      <iframe
-        src={`https://www.youtube.com/embed/${id}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        style={styles.iframe}
-      />
-    </View>
-  )
 
   return (
     <Portal>
       <Modal
         visible={isVisible}
         onDismiss={dismissModal}
-        contentContainerStyle={styles.container}
+        contentContainerStyle={isOnMobile ? styles.mobileContainer : styles.container}
       >
-        {id ? modalPresentation : (
+        {id ? (
+          <View style={styles.content}>
+            {isOnMobile ? <VideoPresenter id={id} /> : <iframe
+              src={`https://www.youtube.com/embed/${id}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              style={{ width: '100%', height: '100%', border: 'none' }}
+            />}
+          </View>
+        ) : (
           <View>
             <Text>No video available</Text>
           </View>

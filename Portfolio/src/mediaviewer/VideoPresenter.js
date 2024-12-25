@@ -6,6 +6,7 @@ import { openLink } from "../utils/openLink";
 const VideoPresenter = ({ id }) => {
   const targetImageURL = `https://img.youtube.com/vi/${id}/0.jpg`;
   const targetYoutubeURL = `https://www.youtube.com/watch?v=${id}`;
+
   return (
     <View style={styles.container}>
       <Image
@@ -22,16 +23,12 @@ const VideoPresenter = ({ id }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
   },
   image: {
     width: '100%',
-    height: '50%',
+    aspectRatio: 16 / 9,
     borderRadius: 10,
-    marginBottom: 20,
   },
   button: {
     marginTop: 10,
