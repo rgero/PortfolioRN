@@ -1,5 +1,6 @@
 import { Surface, useTheme } from "react-native-paper"
 
+import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-web"
 import { StyleSheet } from "react-native";
 import { isMobile } from "../utils/isMobile";
@@ -7,15 +8,17 @@ import { isMobile } from "../utils/isMobile";
 const PageLayout = ({children}) => {
   const theme = useTheme();
   return (
-    <ScrollView 
-      style={[styles.container, {backgroundColor: theme.colors.surface}]}
-      contentContainerStyle={{alignItems: "center"}}
-      showsVerticalScrollIndicator={false}
-    >
-      <Surface style={styles.surface}>
-          {children}
-      </Surface>
-    </ScrollView>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.colors.surface}]}>
+      <ScrollView 
+        style={[styles.container, {backgroundColor: theme.colors.surface}]}
+        contentContainerStyle={{alignItems: "center"}}
+        showsVerticalScrollIndicator={false}
+      >
+        <Surface style={styles.surface}>
+            {children}
+        </Surface>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

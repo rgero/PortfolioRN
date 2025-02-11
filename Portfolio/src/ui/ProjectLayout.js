@@ -12,7 +12,10 @@ const ProjectLayout = ({children}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.surface}}>
       <Surface style={styles.surface}>
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <ScrollView 
+          contentContainerStyle={styles.scrollViewContent}
+          showsVerticalScrollIndicator={false}
+        >
           {children}
         </ScrollView>
         <FAB 
