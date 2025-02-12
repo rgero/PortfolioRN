@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomDrawer from './src/drawer/CustomDrawer';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import ProjectNavigator from './src/navigators/ProjectNavigator';
@@ -64,43 +65,45 @@ export default function App() {
   };
   
   return (
-    <PaperProvider theme={WebsiteTheme}>
-      <QueryClientProvider client={queryClient}>
-        <SafeAreaProvider>
-          <NavigationContainer
-            linking={linking}
-            initialState={initialState}
-            onStateChange={onStateChange}
-          >
-            <Drawer.Navigator 
-              drawerContent={(props) => <CustomDrawer {...props}/> }
-              screenOptions={({ route }) => {
-                const { colors } = useTheme();
-                return {
-                  headerTitle: `${route.name} - Roymond.NET`,
-                  headerTitleStyle: {
-                    color: colors.primary,
-                    fontWeight: 'bold',
-                  },
-                  headerStyle: {
-                    backgroundColor: colors.background,
-                    borderBottomWidth: 0,
-                  },
-                  headerTintColor: colors.primary,
-                  title: `${route.name} - Roymond.NET`,
-                };
-              }}
+    <GestureHandlerRootView>
+      <PaperProvider theme={WebsiteTheme}>
+        <QueryClientProvider client={queryClient}>
+          <SafeAreaProvider>
+            <NavigationContainer
+              linking={linking}
+              initialState={initialState}
+              onStateChange={onStateChange}
             >
-              <Drawer.Screen name="Home" component={HomeScreen} />
-              <Drawer.Screen
-                name="Projects" 
-                component={ProjectNavigator}
-              />
-              <Drawer.Screen name="Resume" component={ResumeScreen} />
-            </Drawer.Navigator>
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </QueryClientProvider>
-    </PaperProvider>
+              <Drawer.Navigator 
+                drawerContent={(props) => <CustomDrawer {...props}/> }
+                screenOptions={({ route }) => {
+                  const { colors } = useTheme();
+                  return {
+                    headerTitle: `${route.name} - Roymond.NET`,
+                    headerTitleStyle: {
+                      color: colors.primary,
+                      fontWeight: 'bold',
+                    },
+                    headerStyle: {
+                      backgroundColor: colors.background,
+                      borderBottomWidth: 0,
+                    },
+                    headerTintColor: colors.primary,
+                    title: `${route.name} - Roymond.NET`,
+                  };
+                }}
+              >
+                <Drawer.Screen name="Home" component={HomeScreen} />
+                <Drawer.Screen
+                  name="Projects" 
+                  component={ProjectNavigator}
+                />
+                <Drawer.Screen name="Resume" component={ResumeScreen} />
+              </Drawer.Navigator>
+            </NavigationContainer>
+          </SafeAreaProvider>
+        </QueryClientProvider>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }
