@@ -1,9 +1,9 @@
 import { Divider, Text, useTheme } from "react-native-paper";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import DetailsBox from "./DetailsBox";
+import ImageCarousel from "../mediaviewer/ImageCarousel";
 import Markdown from "react-native-markdown-display";
-import MediaContainer from "../mediaviewer/MediaContainer";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { isMobile } from "../utils/isMobile";
 import { useGetProject } from "./hooks/useGetProject";
@@ -18,7 +18,7 @@ const ProjectPresentation = ({ id }) => {
   const hasDetails = project.repo !== "" || project.website !== "";
   
   return (
-    <View style={styles.scrollViewContent}>
+    <View>
       <Text style={{ fontSize: RFPercentage(3) }}>{project.name}</Text>
       <Divider style={{ marginBottom: 30 }} />
       <View style={styles.container}>
@@ -27,10 +27,7 @@ const ProjectPresentation = ({ id }) => {
             {project.description}
           </Markdown>
           {project.media.length !== 0 && (
-            <View style={{marginTop: 10}}>
-              <Text variant="headlineMedium">Media</Text>
-              <MediaContainer media={project.media} />
-            </View>
+            <ImageCarousel media={project.media} />
           )}
         </View>
         {hasDetails && (

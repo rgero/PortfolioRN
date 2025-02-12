@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: isMobile() ? 100 : undefined,
     paddingTop: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingBottom: 50
   },
 })
 
