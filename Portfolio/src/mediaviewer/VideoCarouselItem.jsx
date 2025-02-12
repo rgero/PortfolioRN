@@ -1,16 +1,12 @@
 import { Image, StyleSheet } from "react-native";
 
-import { Text } from "react-native-paper";
+import { Button } from "react-native-paper";
 import { View } from "react-native-web";
+import { openLink } from "../utils/openLink";
 
-const ImageCarouselItem = ({item}) => {
-  let address;
-  if (item.type === "image")
-  {
-    address = item.src;
-  } else {
-    address = `https://img.youtube.com/vi/${item.id}/0.jpg`;
-  }
+const VideoCarouselItem = ({item}) => {
+  const address = `https://img.youtube.com/vi/${item.src}/0.jpg`;
+  const youtubeLink = `https://www.youtube.com/watch?v=${item.src}`;
   
   return (
     <View
@@ -25,7 +21,13 @@ const ImageCarouselItem = ({item}) => {
         style={styles.image}
         resizeMode="contain"
       />
-      {/* <Text style={{ textAlign: "center", fontSize: 30 }}>Test</Text> */}
+      <Button
+        icon="youtube"
+        size={20}
+        onPress={() => openLink(youtubeLink)}
+      >
+        Open on YouTube
+      </Button>
     </View>
   );
 }
@@ -39,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageCarouselItem
+export default VideoCarouselItem
