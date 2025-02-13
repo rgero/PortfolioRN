@@ -12,7 +12,9 @@ export const getProjects = async () => {
       console.error(error);
       throw new Error("Projects cannot be loaded");
   }
- 
+
+  // Sort by displayOrder
+  data.sort((a, b) => a.displayOrder - b.displayOrder);
   return data;
 }
 
