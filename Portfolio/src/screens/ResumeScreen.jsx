@@ -6,7 +6,7 @@ import WebView from 'react-native-webview';
 
 const ResumeScreen = () => {
   const isWeb = Platform.OS === 'web';
-  const pdfUrl = `${SUPABASE_BUCKET_URL}/files/GeroResume.pdf#navpanes=0`;
+  const pdfUrl = `https://docs.google.com/gview?embedded=true&url=${SUPABASE_BUCKET_URL}/files/GeroResume.pdf`;
 
   return (
     <Surface style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
