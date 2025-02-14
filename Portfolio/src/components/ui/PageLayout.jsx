@@ -3,7 +3,7 @@ import { Surface, useTheme } from "react-native-paper"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-web"
 import { StyleSheet } from "react-native";
-import { isMobile } from "../utils/isMobile";
+import { isMobile } from "../../utils/isMobile";
 
 const PageLayout = ({children}) => {
   const theme = useTheme();

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import ItchIconButton from '../ui/ItchIoIconButton';
 import React from 'react';
-import { openLink } from '../utils/openLink';
+import { openLink } from '../../utils/openLink';
 
 const SocialLinks = () => {
   return (

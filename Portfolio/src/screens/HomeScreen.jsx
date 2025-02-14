@@ -1,6 +1,6 @@
 import Markdown from "react-native-markdown-display";
-import PageLayout from "../ui/PageLayout";
-import Title from "../ui/Title";
+import PageLayout from "../components/ui/PageLayout";
+import Title from "../components/ui/Title";
 import homeMarkdown from "../data/Home";
 import { useTheme } from "react-native-paper";
 

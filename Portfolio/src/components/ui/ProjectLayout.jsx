@@ -3,8 +3,8 @@ import { SafeAreaView, ScrollView } from "react-native-web";
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from "react-native";
-import { isMobile } from "../utils/isMobile";
 import { useNavigation } from "@react-navigation/native"
+import { isMobile } from "../../utils/isMobile";
 
 const ProjectLayout = ({children}) => {
   const navigation = useNavigation();

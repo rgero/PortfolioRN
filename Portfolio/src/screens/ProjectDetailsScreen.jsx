@@ -1,5 +1,5 @@
-import ProjectLayout from "../ui/ProjectLayout";
-import ProjectPresentation from "../projects/ProjectPresentation";
+import ProjectLayout from "../components/ui/ProjectLayout";
+import ProjectPresentation from "../components/projects/ProjectPresentation";
 
 const ProjectDetailsScreen = ({route}) => {
   return (

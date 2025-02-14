@@ -1,4 +1,4 @@
-import { getProjects } from "../../services/apiProjects";
+import { getProjects } from "../../../services/apiProjects";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetProjects = () => {

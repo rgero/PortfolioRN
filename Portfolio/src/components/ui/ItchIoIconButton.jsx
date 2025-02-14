@@ -2,7 +2,7 @@ import { IconButton, useTheme } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
 
 import { SvgXml } from 'react-native-svg';
-import { openLink } from '../utils/openLink';
+import { openLink } from '../../utils/openLink';
 
 const ItchIconButton = () => {
   const [svgContent, setSvgContent] = useState('');

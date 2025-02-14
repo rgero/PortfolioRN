@@ -2,7 +2,7 @@ import { Image, StyleSheet } from "react-native";
 
 import { Button } from "react-native-paper";
 import { View } from "react-native-web";
-import { openLink } from "../utils/openLink";
+import { openLink } from "../../utils/openLink";
 
 const VideoCarouselItem = ({item}) => {
   const address = `https://img.youtube.com/vi/${item.src}/0.jpg`;

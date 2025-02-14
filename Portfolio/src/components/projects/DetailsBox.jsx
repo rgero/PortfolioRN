@@ -1,7 +1,7 @@
 import { Button, Card, Text, useTheme } from "react-native-paper"
 
 import { View } from "react-native-web"
-import { openLink } from '../utils/openLink';
+import { openLink } from '../../utils/openLink';
 
 const DetailsBox = ({details}) => {
   const theme = useTheme();

@@ -6,7 +6,7 @@ import { Dimensions, View } from "react-native";
 import ImageCarouselItem from "./ImageCarouselItem";
 import { Text } from "react-native-paper";
 import VideoCarouselItem from "./VideoCarouselItem";
-import { isMobile } from "../utils/isMobile";
+import { isMobile } from "../../utils/isMobile";
 import { useSharedValue } from "react-native-reanimated";
 
 const width = Dimensions.get("window").width;
