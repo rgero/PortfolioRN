@@ -5,7 +5,7 @@ import { isMobile } from "../../utils/isMobile";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { useSearchContext } from "../../context/SearchContext";
 
-const SearchMenu = () => {
+const OptionsMenu = () => {
   const [visible, setVisible] = useState(false);
   const {searchText, handleSearchChange} = useSearchContext();
 
@@ -34,4 +34,4 @@ const SearchMenu = () => {
   );
 };
 
-export default SearchMenu;
+export default OptionsMenu;
