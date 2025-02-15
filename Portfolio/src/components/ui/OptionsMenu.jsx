@@ -27,6 +27,8 @@ const OptionsMenu = () => {
           placeholder="Search..."
           value={searchText}
           onChangeText={handleSearchChange}
+          onFocus={openMenu}
+          onBlur={()=> setTimeout(closeMenu, 200)}
           style={{ margin: 10, width: "95%" }}
         />
       </Menu>
