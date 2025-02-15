@@ -4,15 +4,26 @@ import Title from "../components/ui/Title";
 import { View } from "react-native-web";
 import OptionsMenu from "../components/ui/OptionsMenu";
 import { useState } from "react";
+import { IconButton } from "react-native-paper";
 
 const ProjectListScreen = () => {
-  const [visibleMenuVisible, setMenuVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const toggleSearchVisibility = () => {
+    setVisible((prev) => !prev);
+  };
+
   return (
     <PageLayout>
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <Title>Projects</Title>
-        <OptionsMenu visible={visibleMenuVisible} setVisible={setMenuVisible}/>
+        <IconButton
+          icon={visible ? "close" : "magnify"}
+          onPress={toggleSearchVisibility} // Now this works!
+          size={24}
+        />
       </View>
+      <OptionsMenu visible={visible} /> {/* Pass `visible` as a prop */}
       <ProjectList />
     </PageLayout>
   );

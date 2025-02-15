@@ -1,41 +1,51 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import { Menu, Searchbar, IconButton } from "react-native-paper";
-import { isMobile } from "../../utils/isMobile";
-import { RFPercentage } from "react-native-responsive-fontsize";
+import React, { useRef, useEffect, useState } from "react";
+import { View, Animated } from "react-native";
+import { Searchbar } from "react-native-paper";
 import { useSearchContext } from "../../context/SearchContext";
+import { StyleSheet } from "react-native";
 
-const OptionsMenu = ({visible, setVisible}) => {
+const OptionsMenu = ({ visible }) => {
   const { searchText, handleSearchChange } = useSearchContext();
+  const [searchbarHeight, setSearchbarHeight] = useState(0); // Store Searchbar height
+  const height = useRef(new Animated.Value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
 
-  const openMenu = () => setVisible(true);
-  const closeMenu = () => setVisible(false);
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(height, {
+        toValue: visible ? searchbarHeight + 10 : 0, // Animate to measured height
+        duration: 300,
+        useNativeDriver: false, // Height animation needs `false`
+      }),
+      Animated.timing(opacity, {
+        toValue: visible ? 1 : 0, // Fade in
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [visible, searchbarHeight]);
 
   return (
-    <View style={{ flexDirection: "row", justifyContent: "center" }}>
-      <Menu
-        visible={visible}
-        onDismiss={closeMenu}
-        anchor={
-          <IconButton
-            icon="magnify"
-            onPress={openMenu}
-            size={isMobile() ? RFPercentage(3) : RFPercentage(2)}
-          />
-        }
-        anchorPosition="bottom"
-        contentStyle={{ width: 300, padding: "10px" }} // Controls menu width
-      >
-        <Searchbar
-          placeholder="Search..."
-          value={searchText}
-          onChangeText={handleSearchChange}
-          style={{ margin: 10, width: "95%" }}
-          onPointerDown={(e) => e.stopPropagation()} // Prevent menu from closing
-        />
-      </Menu>
-    </View>
+    <Animated.View style={[styles.container, { height, opacity }]}>
+      <Searchbar
+        placeholder="Search..."
+        value={searchText}
+        onChangeText={handleSearchChange}
+        style={styles.searchbar}
+        onLayout={(event) => setSearchbarHeight(event.nativeEvent.layout.height)} // Measure height
+      />
+    </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    overflow: "hidden", // Prevents content from showing when collapsed
+    alignItems: "center"
+  },
+  searchbar: {
+    width: "95%",
+  },
+});
 
 export default OptionsMenu;
