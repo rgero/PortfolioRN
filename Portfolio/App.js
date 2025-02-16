@@ -12,7 +12,7 @@ import ResumeScreen from './src/screens/ResumeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { WebsiteTheme } from './src/utils/theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SearchProvider } from './src/context/SearchContext';
+import { ProjectProvider } from './src/context/ProjectContext';
 
 const Drawer = createDrawerNavigator();
 
@@ -70,7 +70,7 @@ export default function App() {
       <PaperProvider theme={WebsiteTheme}>
         <QueryClientProvider client={queryClient}>
           <SafeAreaProvider>
-            <SearchProvider>
+            <ProjectProvider>
               <NavigationContainer
                 linking={linking}
                 initialState={initialState}
@@ -103,7 +103,7 @@ export default function App() {
                   <Drawer.Screen name="Resume" component={ResumeScreen} />
                 </Drawer.Navigator>
               </NavigationContainer>
-            </SearchProvider>
+            </ProjectProvider>
           </SafeAreaProvider>
         </QueryClientProvider>
       </PaperProvider>

@@ -2,11 +2,11 @@ import { FlatList } from "react-native";
 import ProjectCard from "./ProjectCard"
 import { Text } from "react-native-paper";
 import { useGetProjects } from "./hooks/useGetProjects";
-import { useSearchContext } from "../../context/SearchContext";
+import { useProjectContext } from "../../context/ProjectContext";
 
 const ProjectList = () => {
   const {isLoading, projects, error} = useGetProjects();
-  const {searchText} = useSearchContext();
+  const {searchText} = useProjectContext();
 
   const filteredProjects = projects.filter(project => {
     const searchTerm = searchText.toLowerCase();
