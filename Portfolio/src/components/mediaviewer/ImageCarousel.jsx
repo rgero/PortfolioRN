@@ -2,9 +2,9 @@ import * as React from "react";
 
 import Carousel, { Pagination } from "react-native-reanimated-carousel";
 import { Dimensions, View } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 
 import ImageCarouselItem from "./ImageCarouselItem";
-import { Text } from "react-native-paper";
 import VideoCarouselItem from "./VideoCarouselItem";
 import { isMobile } from "../../utils/isMobile";
 import { useSharedValue } from "react-native-reanimated";
@@ -12,6 +12,7 @@ import { useSharedValue } from "react-native-reanimated";
 const width = Dimensions.get("window").width;
  
 const ImageCarousel = ({media}) => {
+  const theme = useTheme();
   const ref = React.useRef(null);
   const progress = useSharedValue(0);
   
@@ -49,7 +50,13 @@ const ImageCarousel = ({media}) => {
         <Pagination.Basic
           progress={progress}
           data={media}
-          dotStyle={{ backgroundColor: "rgba(0,0,0,0.2)", borderRadius: 50 }}
+          dotStyle={{ 
+            backgroundColor: "rgba(194, 194, 194, 0.2)", 
+            borderRadius: 50 
+          }}
+          activeDotStyle={{ 
+            backgroundColor: theme.colors.primary,
+          }}
           containerStyle={{ gap: 5, marginTop: 10 }}
           onPress={onPressPagination}
         />
