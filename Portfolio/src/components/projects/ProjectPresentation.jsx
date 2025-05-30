@@ -2,11 +2,11 @@ import { Divider, Text, useTheme } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 
 import DetailsBox from "./DetailsBox";
+import ImageCarousel from "../mediaviewer/ImageCarousel";
 import Markdown from "react-native-markdown-display";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { isMobile } from "../../utils/isMobile";
 import { useGetProject } from "./hooks/useGetProject";
-import ImageCarousel from "../mediaviewer/ImageCarousel";
 
 const ProjectPresentation = ({ id }) => {
   const theme = useTheme();
@@ -23,7 +23,7 @@ const ProjectPresentation = ({ id }) => {
       <Divider style={{ marginBottom: 30 }} />
       <View style={styles.container}>
         <View style={styles.description}>
-          <Markdown style={{ body: { color: theme.colors.outline } }}>
+          <Markdown style={{ body: { color: theme.colors.outline, paddingBottom: "15px" } }}>
             {project.description}
           </Markdown>
           {project.media.length !== 0 && (
@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
     flexDirection: isMobile() ? 'column-reverse' : 'row',
   },
   description: {
-    flex: isMobile() ? 1 : 6, // Adjust the flex value to specify the width
+    flex: isMobile() ? 1 : 6,
   },
   details: {
-    flex: isMobile() ? undefined : 1, // Adjust the flex value to specify the width
+    flex: isMobile() ? undefined : 1,
   }
 });
 
