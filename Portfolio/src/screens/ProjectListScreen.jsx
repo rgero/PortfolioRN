@@ -19,11 +19,11 @@ const ProjectListScreen = () => {
         <Title>Projects</Title>
         <IconButton
           icon={visible ? "close" : "magnify"}
-          onPress={toggleSearchVisibility} // Now this works!
+          onPress={toggleSearchVisibility}
           size={24}
         />
       </View>
-      <OptionsMenu visible={visible} /> {/* Pass `visible` as a prop */}
+      <OptionsMenu visible={visible} />
       <ProjectList />
     </PageLayout>
   );
