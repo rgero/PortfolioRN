@@ -16,6 +16,8 @@ services:
       - "traefik.http.services.portfoliorn.loadbalancer.server.port=${PORT_NUMBER}"
       - "traefik.http.services.portfoliorn.loadbalancer.healthcheck.path=/health"
       - "traefik.http.services.portfoliorn.loadbalancer.healthcheck.interval=10s"
+      - "traefik.http.middlewares.portfoliorn-headers.headers.customrequestheaders.Host=${DOMAIN_NAME}"
+      - "traefik.http.routers.portfoliorn.middlewares=portfoliorn-headers"
     ports:
       - "${PORT_NUMBER}:${PORT_NUMBER}"
     container_name: portfolio_rn
