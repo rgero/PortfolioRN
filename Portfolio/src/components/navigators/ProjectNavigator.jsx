@@ -1,5 +1,5 @@
-import ProjectDetailsScreen from "../../screens/ProjectDetailsScreen";
-import ProjectListScreen from "../../screens/ProjectListScreen";
+import ProjectDetailsScreen from "../../screens/projects/ProjectDetailsScreen";
+import ProjectListScreen from "../../screens/projects/ProjectListScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();

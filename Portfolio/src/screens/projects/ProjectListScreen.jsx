@@ -1,10 +1,10 @@
-import PageLayout from "../components/ui/PageLayout";
-import ProjectList from "../components/projects/ProjectList";
-import Title from "../components/ui/Title";
-import { View } from "react-native-web";
-import OptionsMenu from "../components/ui/OptionsMenu";
-import { useState } from "react";
 import { IconButton } from "react-native-paper";
+import OptionsMenu from "../../components/ui/OptionsMenu";
+import PageLayout from "../../components/ui/PageLayout";
+import ProjectList from "../../components/projects/ProjectList";
+import Title from "../../components/ui/Title";
+import { View } from "react-native-web";
+import { useState } from "react";
 
 const ProjectListScreen = () => {
   const [visible, setVisible] = useState(false);

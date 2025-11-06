@@ -1,0 +1,39 @@
+import { IconButton, useTheme } from "react-native-paper";
+
+import Markdown from "react-native-markdown-display";
+import OptionsMenu from "../../components/ui/OptionsMenu";
+import PageLayout from "../../components/ui/PageLayout";
+import ProjectList from "../../components/projects/ProjectList";
+import Title from "../../components/ui/Title";
+import { View } from "react-native-web";
+import courseIntroduction from "../../data/Courses";
+import { useState } from "react";
+
+const CourseListScreen = () => {
+  const [visible, setVisible] = useState(false);
+  const theme = useTheme();
+
+  const toggleSearchVisibility = () => {
+    setVisible((prev) => !prev);
+  };
+
+  return (
+    <PageLayout>
+      <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+        <Title>Courses</Title>
+        <IconButton
+          icon={visible ? "close" : "magnify"}
+          onPress={toggleSearchVisibility}
+          size={24}
+        />
+      </View>
+      <Markdown style={{body: {color: theme.colors.onSurface}}}>
+        {courseIntroduction}
+      </Markdown>
+      <OptionsMenu visible={visible} />
+      <ProjectList />
+    </PageLayout>
+  )
+}
+
+export default CourseListScreen

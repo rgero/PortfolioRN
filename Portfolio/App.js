@@ -3,16 +3,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CourseNavigator from './src/components/navigators/CourseNavigator';
 import CustomDrawer from './src/components/drawer/CustomDrawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import ProjectNavigator from './src/components/navigators/ProjectNavigator';
+import { ProjectProvider } from './src/context/ProjectContext';
 import ResumeScreen from './src/screens/ResumeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { WebsiteTheme } from './src/utils/theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { ProjectProvider } from './src/context/ProjectContext';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,6 +28,13 @@ const linking = {
     screens: {
       Home: '',
       Notifications: 'notifications',
+      Courses: {
+        path: "courses",
+        screens : {
+          "Course List": '',
+          "Course Details": ":id",
+        }
+      },
       Projects: {
         path: 'projects',
         screens: {
@@ -96,6 +104,7 @@ export default function App() {
                   }}
                 >
                   <Drawer.Screen name="Home" component={HomeScreen} />
+                  <Drawer.Screen name="Courses" component={CourseNavigator}/>
                   <Drawer.Screen
                     name="Projects" 
                     component={ProjectNavigator}
