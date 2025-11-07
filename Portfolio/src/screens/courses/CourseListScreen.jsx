@@ -31,7 +31,8 @@ const CourseListScreen = () => {
       <Markdown style={{body: {color: theme.colors.onSurface}}}>
         {courseIntroduction}
       </Markdown>
-      <CourseList />
+      <CourseList title="In Progress Courses" filterFn={c => c.status !== 1} />
+      <CourseList title="Completed Courses" filterFn={c => c.status === 1} />
     </PageLayout>
   )
 }
