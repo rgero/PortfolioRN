@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CourseNavigator from './src/components/navigators/CourseNavigator';
+import { CourseProvider } from './src/context/CourseContext';
 import CustomDrawer from './src/components/drawer/CustomDrawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './src/screens/HomeScreen';
@@ -79,39 +80,41 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <SafeAreaProvider>
             <ProjectProvider>
-              <NavigationContainer
-                linking={linking}
-                initialState={initialState}
-                onStateChange={onStateChange}
-              >
-                <Drawer.Navigator 
-                  drawerContent={(props) => <CustomDrawer {...props}/> }
-                  screenOptions={({ route }) => {
-                    const { colors } = useTheme();
-                    return {
-                      headerTitle: `${route.name} - Roymond.NET`,
-                      headerTitleStyle: {
-                        color: colors.primary,
-                        fontWeight: 'bold',
-                      },
-                      headerStyle: {
-                        backgroundColor: colors.background,
-                        borderBottomWidth: 0,
-                      },
-                      headerTintColor: colors.primary,
-                      title: `${route.name} - Roymond.NET`,
-                    };
-                  }}
+              <CourseProvider>
+                <NavigationContainer
+                  linking={linking}
+                  initialState={initialState}
+                  onStateChange={onStateChange}
                 >
-                  <Drawer.Screen name="Home" component={HomeScreen} />
-                  <Drawer.Screen name="Courses" component={CourseNavigator}/>
-                  <Drawer.Screen
-                    name="Projects" 
-                    component={ProjectNavigator}
-                  />
-                  <Drawer.Screen name="Resume" component={ResumeScreen} />
-                </Drawer.Navigator>
-              </NavigationContainer>
+                  <Drawer.Navigator 
+                    drawerContent={(props) => <CustomDrawer {...props}/> }
+                    screenOptions={({ route }) => {
+                      const { colors } = useTheme();
+                      return {
+                        headerTitle: `${route.name} - Roymond.NET`,
+                        headerTitleStyle: {
+                          color: colors.primary,
+                          fontWeight: 'bold',
+                        },
+                        headerStyle: {
+                          backgroundColor: colors.background,
+                          borderBottomWidth: 0,
+                        },
+                        headerTintColor: colors.primary,
+                        title: `${route.name} - Roymond.NET`,
+                      };
+                    }}
+                  >
+                    <Drawer.Screen name="Home" component={HomeScreen} />
+                    <Drawer.Screen name="Courses" component={CourseNavigator}/>
+                    <Drawer.Screen
+                      name="Projects" 
+                      component={ProjectNavigator}
+                    />
+                    <Drawer.Screen name="Resume" component={ResumeScreen} />
+                  </Drawer.Navigator>
+                </NavigationContainer>
+              </CourseProvider>
             </ProjectProvider>
           </SafeAreaProvider>
         </QueryClientProvider>

@@ -1,9 +1,9 @@
 import { IconButton, useTheme } from "react-native-paper";
 
+import CourseList from "../../components/courses/CourseList";
 import Markdown from "react-native-markdown-display";
 import OptionsMenu from "../../components/ui/OptionsMenu";
 import PageLayout from "../../components/ui/PageLayout";
-import ProjectList from "../../components/projects/ProjectList";
 import Title from "../../components/ui/Title";
 import { View } from "react-native-web";
 import courseIntroduction from "../../data/Courses";
@@ -31,7 +31,7 @@ const CourseListScreen = () => {
         {courseIntroduction}
       </Markdown>
       <OptionsMenu visible={visible} />
-      <ProjectList />
+      <CourseList />
     </PageLayout>
   )
 }

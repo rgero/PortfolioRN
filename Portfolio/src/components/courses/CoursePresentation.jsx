@@ -6,37 +6,37 @@ import ImageCarousel from "../mediaviewer/ImageCarousel";
 import Markdown from "react-native-markdown-display";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { isMobile } from "../../utils/isMobile";
-import { useGetProject } from "./hooks/useGetProject";
+import { useGetCourse } from "./hooks/useGetCourse";
 
-const ProjectPresentation = ({ id }) => {
+const CoursePresentation = ({ id }) => {
   const theme = useTheme();
-  const { isLoading, project, error } = useGetProject(id);
+  const { isLoading, course, error } = useGetCourse(id);
 
   if (isLoading) return <View><Text>Loading...</Text></View>;
   if (error) return <View><Text>Error: {error.message}</Text></View>;
 
-  const hasDetails = project.repo !== "" || project.website !== "";
+  const hasDetails = course.repo !== "" || course.website !== "";
   
   return (
     <View>
-      <Text style={{ fontSize: RFPercentage(3) }}>{project.name}</Text>
+      <Text style={{ fontSize: RFPercentage(3) }}>{course.name}</Text>
       <Divider style={{ marginBottom: 30 }} />
       <View style={styles.container}>
         <View style={styles.description}>
           <Markdown style={{ body: { color: theme.colors.outline, paddingBottom: "15px" } }}>
-            {project.description}
+            {course.description}
           </Markdown>
-          {project.media.length !== 0 && (
-            <ImageCarousel media={project.media} />
+          {course.media.length !== 0 && (
+            <ImageCarousel media={course.media} />
           )}
         </View>
         {hasDetails && (
           <View style={styles.details}>
             <DetailsBox
               details={{
-                repo: project.repo,
-                website: project.website,
-                tags: project.tags,
+                repo: course.repo,
+                website: course.website,
+                tags: course.tags,
               }}
             />
           </View> 
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ProjectPresentation;
+export default CoursePresentation;
