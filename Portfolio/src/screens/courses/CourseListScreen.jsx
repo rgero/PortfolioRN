@@ -27,10 +27,10 @@ const CourseListScreen = () => {
           size={24}
         />
       </View>
+      <OptionsMenu visible={visible} />
       <Markdown style={{body: {color: theme.colors.onSurface}}}>
         {courseIntroduction}
       </Markdown>
-      <OptionsMenu visible={visible} />
       <CourseList />
     </PageLayout>
   )

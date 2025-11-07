@@ -29,12 +29,15 @@ export const getCourseById = async (id) => {
   }
 
   let targetCourse = data[0];
-  for(let j = 0; j < targetCourse.media.length; j++)
-    {
-      targetCourse.media[j] = {
-        type: `${targetCourse.media[j].type}`,
-        src: targetCourse.media[j].type === "image" ? `${baseImageURL}${targetCourse.media[j].src}` : `${targetCourse.media[j].src}`
-      }
+  if (targetCourse.media)
+  {
+    for(let j = 0; j < targetCourse.media.length; j++)
+      {
+        targetCourse.media[j] = {
+          type: `${targetCourse.media[j].type}`,
+          src: targetCourse.media[j].type === "image" ? `${baseImageURL}${targetCourse.media[j].src}` : `${targetCourse.media[j].src}`
+        }
+    }
   }
 
   return targetCourse;

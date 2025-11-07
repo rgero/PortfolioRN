@@ -23,10 +23,10 @@ const CoursePresentation = ({ id }) => {
       <Divider style={{ marginBottom: 30 }} />
       <View style={styles.container}>
         <View style={styles.description}>
-          <Markdown style={{ body: { color: theme.colors.outline, paddingBottom: "15px" } }}>
+          <Markdown style={{ body: { color: theme.colors.outline, paddingBottom: "20px" } }}>
             {course.description}
           </Markdown>
-          {course.media.length !== 0 && (
+          {course.media && course.media.length !== 0 && (
             <ImageCarousel media={course.media} />
           )}
         </View>
