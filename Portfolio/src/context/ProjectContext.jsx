@@ -1,8 +1,12 @@
 import { createContext, useContext, useState } from "react";
 
+import { getProjects } from "../services/apiProjects";
+import { useQuery } from "@tanstack/react-query";
+
 const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
+  const {isLoading, data = [], error, refetch} = useQuery({queryKey: ["projects"], queryFn: getProjects});
   const [searchText, setSearchText] = useState('');
 
   const handleSearchChange = (text) => {
@@ -13,8 +17,27 @@ const ProjectProvider = ({ children }) => {
     setSearchText('');
   }
 
+  const projects = data.filter(project => {
+    const searchTerm = searchText.toLowerCase();
+    return (
+      project.name.toLowerCase().includes(searchTerm) ||
+      project.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+    );
+  });
+
   return (
-    <ProjectContext.Provider value={{ clearSearch, handleSearchChange, searchText, }}>
+    <ProjectContext.Provider value={
+        {
+          clearSearch,
+          error,
+          handleSearchChange, 
+          isLoading,
+          projects,
+          refetch,
+          searchText,
+        }
+      }
+    >
       {children}
     </ProjectContext.Provider>
   );

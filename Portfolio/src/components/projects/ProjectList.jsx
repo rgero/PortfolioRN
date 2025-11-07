@@ -1,20 +1,10 @@
 import { FlatList } from "react-native";
 import ProjectCard from "./ProjectCard"
 import { Text } from "react-native-paper";
-import { useGetProjects } from "./hooks/useGetProjects";
 import { useProjectContext } from "../../context/ProjectContext";
 
 const ProjectList = () => {
-  const {isLoading, projects, error} = useGetProjects();
-  const {searchText} = useProjectContext();
-
-  const filteredProjects = projects.filter(project => {
-    const searchTerm = searchText.toLowerCase();
-    return (
-      project.name.toLowerCase().includes(searchTerm) ||
-      project.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-    );
-  });
+  const {isLoading, error, projects} = useProjectContext();
 
   if (isLoading) return <Text>Loading...</Text>
   if (projects.length === 0) return <Text>No projects found</Text>
@@ -22,7 +12,7 @@ const ProjectList = () => {
 
   return (
     <FlatList
-      data={filteredProjects}
+      data={projects}
       renderItem={({item}) => <ProjectCard title={item.name} languages={item.tags} short={item.short} id={item.id} />}
       keyExtractor={item => item.id}
     />

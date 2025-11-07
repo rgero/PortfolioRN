@@ -1,4 +1,4 @@
-import { IconButton, useTheme } from "react-native-paper";
+import { IconButton, Text, useTheme } from "react-native-paper";
 
 import CourseList from "../../components/courses/CourseList";
 import Markdown from "react-native-markdown-display";
@@ -12,12 +12,16 @@ import { useState } from "react";
 
 const CourseListScreen = () => {
   const [visible, setVisible] = useState(false);
-  const { isLoading, completedCourses, inProgressCourses, handleSearchChange, searchText } = useCourseContext();
+  const { error, isLoading, completedCourses, inProgressCourses, handleSearchChange, searchText } = useCourseContext();
   const theme = useTheme();
 
   const toggleSearchVisibility = () => {
     setVisible((prev) => !prev);
   };
+
+  if (isLoading) return <Text>Loading...</Text>
+  if (inProgressCourses.length === 0 && completedCourses.length === 0) return <Text>No Courses found</Text>
+  if (error) return <Text>Error: {error.message}</Text>
 
   return (
     <PageLayout>

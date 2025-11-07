@@ -8,7 +8,6 @@ const CourseContext = createContext();
 const CourseProvider = ({ children }) => {
   const {isLoading, data: courses = [], error, refetch} = useQuery({queryKey: ["courses"], queryFn: getCourses});
   const [searchText, setSearchText] = useState('');
-  const [completionStatus, setCompletionStatus] = useState(1);
 
   const handleSearchChange = (text) => {
     setSearchText(text);
@@ -22,7 +21,7 @@ const CourseProvider = ({ children }) => {
     return (
       course.name.toLowerCase().includes(searchText.toLowerCase()) ||
       course.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()))
-    ) && course.status && course.status === 1
+    ) && course.status && course.status === 1 // I don't like the magic number. If this was Typescript I'd do an enum.
   })
 
   const inProgressCourses = courses.filter( (course) => {
@@ -43,7 +42,6 @@ const CourseProvider = ({ children }) => {
           isLoading,
           refetch,
           searchText,
-          setCompletionStatus
         }
       }
     >
