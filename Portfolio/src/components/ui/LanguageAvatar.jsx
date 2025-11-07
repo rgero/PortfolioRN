@@ -3,6 +3,7 @@ import { Avatar } from "react-native-paper"
 const languageImages = {
   python: require('../../../assets/languages/python.png'),
   react: require('../../../assets/languages/react.png'),
+  godot: require('../../../assets/languages/godot.png'),
   "react native": require('../../../assets/languages/react.png'),
   "c#": require('../../../assets/languages/csharp.png'),
   unity: require('../../../assets/languages/unity.png'),
