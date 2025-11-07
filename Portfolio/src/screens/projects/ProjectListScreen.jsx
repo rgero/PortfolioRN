@@ -4,9 +4,11 @@ import PageLayout from "../../components/ui/PageLayout";
 import ProjectList from "../../components/projects/ProjectList";
 import Title from "../../components/ui/Title";
 import { View } from "react-native-web";
+import { useProjectContext } from "../../context/ProjectContext";
 import { useState } from "react";
 
 const ProjectListScreen = () => {
+  const {searchText, handleSearchChange} = useProjectContext();
   const [visible, setVisible] = useState(false);
 
   const toggleSearchVisibility = () => {
@@ -23,7 +25,7 @@ const ProjectListScreen = () => {
           size={24}
         />
       </View>
-      <OptionsMenu visible={visible} />
+      <OptionsMenu visible={visible} searchText={searchText} handleSearchChange={handleSearchChange} />
       <ProjectList />
     </PageLayout>
   );

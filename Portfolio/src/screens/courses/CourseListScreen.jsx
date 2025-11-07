@@ -7,10 +7,12 @@ import PageLayout from "../../components/ui/PageLayout";
 import Title from "../../components/ui/Title";
 import { View } from "react-native-web";
 import courseIntroduction from "../../data/Courses";
+import { useCourseContext } from "../../context/CourseContext";
 import { useState } from "react";
 
 const CourseListScreen = () => {
   const [visible, setVisible] = useState(false);
+  const { isLoading, completedCourses, inProgressCourses, handleSearchChange, searchText } = useCourseContext();
   const theme = useTheme();
 
   const toggleSearchVisibility = () => {
@@ -27,12 +29,12 @@ const CourseListScreen = () => {
           size={24}
         />
       </View>
-      <OptionsMenu visible={visible} />
+      <OptionsMenu visible={visible} searchText={searchText} handleSearchChange={handleSearchChange} />
       <Markdown style={{body: {color: theme.colors.onSurface}}}>
         {courseIntroduction}
       </Markdown>
-      <CourseList title="In Progress Courses" filterFn={c => c.status !== 1} />
-      <CourseList title="Completed Courses" filterFn={c => c.status === 1} />
+      {inProgressCourses.length > 0 && <CourseList title="In Progress Courses" courses={inProgressCourses} />}
+      {completedCourses.length > 0 && <CourseList title="Completed Courses" courses={completedCourses} />}
     </PageLayout>
   )
 }

@@ -1,11 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import { Animated } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { useProjectContext } from "../../context/ProjectContext";
 import { StyleSheet } from "react-native";
 
-const OptionsMenu = ({ visible }) => {
-  const { searchText, handleSearchChange } = useProjectContext();
+const OptionsMenu = ({ visible, searchText, handleSearchChange }) => {
   const [searchbarHeight, setSearchbarHeight] = useState(0); // Store Searchbar height
   const height = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
